@@ -6,7 +6,7 @@ const dummy_users = {
       name: "Poly",
       email: "poly@gmail.com",
       avatarUrl:
-          "https://i.pinimg.com/564x/f0/b5/e4/f0b5e40a2fab5692bb7b39c48d1aea21.jpg"),
+          ""),
   "2": User(
       id: "2",
       name: "Nina",
@@ -18,11 +18,11 @@ const dummy_users = {
       name: "Amora",
       email: "amora@gmail.com",
       avatarUrl:
-          "https://i.pinimg.com/564x/f0/b5/e4/f0b5e40a2fab5692bb7b39c48d1aea21.jpg"),
+          "https://clipart-library.com/images_k/dog-png-transparent/dog-png-transparent-5.png"),
   "4": User(
       id: "4",
       name: "Clóvis",
       email: "clovis@gmail.com",
       avatarUrl:
-          "https://i.pinimg.com/564x/f0/b5/e4/f0b5e40a2fab5692bb7b39c48d1aea21.jpg"),
+          ""),
 };
