@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_crud/data/dummy_users.dart';
 import 'package:flutter_crud/provider/users.dart';
+import 'package:flutter_crud/routes/app_routes.dart';
 import 'package:flutter_crud/widgets/user_tile.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +17,9 @@ final Users users = Provider.of(context);
         actions: <Widget> [
           IconButton(
             color: Colors.green.shade800,
-            onPressed: () {}, 
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRoutes.userForm);
+            }, 
             icon: const 
             Icon(Icons.add_circle)),
             
