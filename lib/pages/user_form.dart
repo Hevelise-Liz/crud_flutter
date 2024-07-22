@@ -34,26 +34,33 @@ class _UserFormState extends State<UserForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Formulário de Usuário'),
+        title: const Center(child: Text('Formulário de Cadastro')),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.save),
-            onPressed: () {
-              if (_form.currentState?.validate() ?? false) {
-                _form.currentState?.save();
-
-                Provider.of<Users>(context, listen: false).put(
-                  User(
-                    id: _formData['id'] ?? '',
-                    name: _formData['name'] ?? '',
-                    email: _formData['email'] ?? '',
-                    avatarUrl: _formData['avatarUrl'] ?? '',
-                  ),
-                );
-
-                Navigator.of(context).pop();
-              }
-            },
+          Padding(
+            padding: const EdgeInsets.only(right:10),
+            child: IconButton(
+              icon: const Icon(
+                Icons.save,
+                size: 30,
+                color: Color(0xFF0a7b80),
+              ),
+              onPressed: () {
+                if (_form.currentState?.validate() ?? false) {
+                  _form.currentState?.save();
+            
+                  Provider.of<Users>(context, listen: false).put(
+                    User(
+                      id: _formData['id'] ?? '',
+                      name: _formData['name'] ?? '',
+                      email: _formData['email'] ?? '',
+                      avatarUrl: _formData['avatarUrl'] ?? '',
+                    ),
+                  );
+            
+                  Navigator.of(context).pop();
+                }
+              },
+            ),
           ),
         ],
       ),

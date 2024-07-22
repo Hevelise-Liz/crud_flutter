@@ -16,7 +16,7 @@ class UserList extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 21),
+            padding: const EdgeInsets.only(top: 27),
             child: Center(child: Image.asset('assets/images/placaa.png')),
           ),
           Expanded(
