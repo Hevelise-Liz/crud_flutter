@@ -9,27 +9,36 @@ class UserList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-final Users users = Provider.of(context);
+    final Users users = Provider.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(child: Text("LISTA DE USUÁRIOS")),
-        actions: <Widget> [
-          IconButton(
-            color: Colors.green.shade800,
-            onPressed: () {
-              Navigator.of(context).pushNamed(AppRoutes.userForm);
-            }, 
-            icon: const 
-            Icon(Icons.add_circle)),
-            
-
-        ]
+      backgroundColor: Colors.grey.shade200,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 21),
+            child: Center(child: Image.asset('assets/images/placaa.png')),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: users.count,
+              itemBuilder: (ctx, i) => UserTile(users.byIndex(i)),
+            ),
+          ),
+        ],
       ),
-      body: ListView.builder(
-        itemCount: users.count,
-        itemBuilder: (ctx, i) => UserTile(users.byIndex(i)),
-        )
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed(AppRoutes.userForm);
+        },
+        backgroundColor: const Color(0xFF0a7b80),
+        shape: const CircleBorder(),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 30,
+        ),
+      ),
     );
   }
 }
