@@ -37,7 +37,7 @@ class _UserFormState extends State<UserForm> {
         title: const Center(child: Text('Formulário de Cadastro')),
         actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(right:10),
+            padding: const EdgeInsets.only(right: 10),
             child: IconButton(
               icon: const Icon(
                 Icons.save,
@@ -47,7 +47,7 @@ class _UserFormState extends State<UserForm> {
               onPressed: () {
                 if (_form.currentState?.validate() ?? false) {
                   _form.currentState?.save();
-            
+
                   Provider.of<Users>(context, listen: false).put(
                     User(
                       id: _formData['id'] ?? '',
@@ -56,7 +56,7 @@ class _UserFormState extends State<UserForm> {
                       avatarUrl: _formData['avatarUrl'] ?? '',
                     ),
                   );
-            
+
                   Navigator.of(context).pop();
                 }
               },
@@ -64,60 +64,74 @@ class _UserFormState extends State<UserForm> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-        child: Form(
-          key: _form,
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                initialValue: _formData['name'],
-                decoration: const InputDecoration(
-                  labelText: 'Nome',
-                  hintText: 'Digite seu nome',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Form(
+            key: _form,
+            child: Column(
+              children: <Widget>[
+                TextFormField(
+                  initialValue: _formData['name'],
+                  decoration: const InputDecoration(
+                    labelText: 'Nome',
+                    hintText: 'Digite seu nome',
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Nome é obrigatório';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) => _formData['name'] = value!,
                 ),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Nome é obrigatório';
-                  }
-                  return null;
-                },
-                onSaved: (value) => _formData['name'] = value!,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                initialValue: _formData['email'],
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  hintText: 'Digite seu email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                const SizedBox(height: 20),
+                TextFormField(
+                  initialValue: _formData['email'],
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    hintText: 'Digite seu email',
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Email é obrigatório';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) => _formData['email'] = value!,
                 ),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Email é obrigatório';
-                  }
-                  return null;
-                },
-                onSaved: (value) => _formData['email'] = value!,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                initialValue: _formData['avatarUrl'],
-                decoration: const InputDecoration(
-                  labelText: 'URL da Imagem',
-                  hintText: 'Insira a URL da imagem (opcional)',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                const SizedBox(height: 20),
+                TextFormField(
+                  initialValue: _formData['avatarUrl'],
+                  decoration: const InputDecoration(
+                    labelText: 'URL da Imagem',
+                    hintText: 'Insira a URL da imagem (opcional)',
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(6)),
+                    ),
                   ),
+                  onSaved: (value) => _formData['avatarUrl'] = value!,
                 ),
-                onSaved: (value) => _formData['avatarUrl'] = value!,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
